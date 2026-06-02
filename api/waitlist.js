@@ -34,8 +34,8 @@ export default async function handler(req, res) {
 
     if (!checkRes.ok) {
       const err = await checkRes.json();
-      console.error('Airtable check error:', JSON.stringify(err));
-      return res.status(502).json({ error: 'Failed to check waitlist', detail: err });
+      console.error('Airtable check error:', err);
+      return res.status(502).json({ error: 'Failed to check waitlist' });
     }
 
     const checkData = await checkRes.json();
