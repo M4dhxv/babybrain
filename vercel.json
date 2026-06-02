@@ -1,12 +1,1 @@
-{
-  "version": 2,
-  "functions": {
-    "api/waitlist.js": {
-      "runtime": "nodejs20.x"
-    }
-  },
-  "routes": [
-    { "src": "/api/waitlist", "dest": "/api/waitlist.js" },
-    { "src": "/(.*)", "dest": "/$1" }
-  ]
-}
+{}
