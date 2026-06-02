@@ -130,14 +130,81 @@
         <p class="subheading">
             BabyBrain is Singapore's all-in-one platform for discovering baby, toddler &amp; kids activities.
         </p>
-        <div class="card">
+        <div class="card" id="waitlist-card">
             <div class="card-title">Join the waitlist ❤️</div>
             <div class="card-sub">Be the first to know when we launch!</div>
-            <form class="form" onsubmit="event.preventDefault(); alert('Thanks for joining!');">
-                <input type="email" placeholder="Enter your email address" required>
-                <button type="submit">Join Waitlist</button>
+            <form class="form" id="waitlist-form" novalidate>
+                <input type="email" id="email-input" placeholder="Enter your email address" required autocomplete="email">
+                <button type="submit" id="submit-btn">Join Waitlist</button>
             </form>
+            <div id="form-message" style="display:none; margin-top:1rem; font-weight:700; font-size:0.97rem;"></div>
         </div>
     </div>
+
+    <script>
+        const form = document.getElementById('waitlist-form');
+        const emailInput = document.getElementById('email-input');
+        const submitBtn = document.getElementById('submit-btn');
+        const message = document.getElementById('form-message');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = emailInput.value.trim();
+
+            // Client-side validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailRegex.test(email)) {
+                showMessage('Please enter a valid email address.', '#f9416e');
+                return;
+            }
+
+            // Loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Joining...';
+            submitBtn.style.opacity = '0.75';
+            message.style.display = 'none';
+
+            try {
+                const res = await fetch('/api/waitlist', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email }),
+                });
+
+                const data = await res.json();
+
+                if (res.status === 200) {
+                    // Success — replace form with success message
+                    form.style.display = 'none';
+                    document.querySelector('.card-sub').style.display = 'none';
+                    document.querySelector('.card-title').textContent = '✓ You\'re on the waitlist!';
+                    showMessage("We'll let you know as soon as BabyBrain launches.", '#1e2d5a');
+                } else if (res.status === 409) {
+                    // Duplicate
+                    showMessage('You\'re already on the waitlist.', '#5a6a8a');
+                    resetBtn();
+                } else {
+                    showMessage('Something went wrong. Please try again.', '#f9416e');
+                    resetBtn();
+                }
+            } catch (err) {
+                showMessage('Network error. Please check your connection and try again.', '#f9416e');
+                resetBtn();
+            }
+        });
+
+        function showMessage(text, color) {
+            message.textContent = text;
+            message.style.color = color;
+            message.style.display = 'block';
+        }
+
+        function resetBtn() {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Join Waitlist';
+            submitBtn.style.opacity = '1';
+        }
+    </script>
 </body>
 </html>
