@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BabyBrain - Something amazing is coming!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f5fb;
+            background-image:
+                radial-gradient(ellipse 420px 380px at -80px 100%, rgba(255,150,190,0.55) 0%, transparent 70%),
+                radial-gradient(ellipse 320px 300px at 110% 100%, rgba(160,170,255,0.55) 0%, transparent 70%),
+                radial-gradient(ellipse 260px 200px at 105% 0%, rgba(255,190,200,0.45) 0%, transparent 70%);
+        }
+
+        .page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            max-width: 720px;
+            padding: 1.5rem;
+            /* Shift block up so the email card lands at vertical center */
+            margin-bottom: 18vh;
+        }
+
+        .logo {
+            width: 280px;
+            max-width: 80%;
+            height: auto;
+            margin-bottom: 0.3rem;
+        }
+
+        .heading {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1e2d5a;
+            margin-bottom: 0.5rem;
+        }
+
+        .subheading {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #5a6a8a;
+            line-height: 1.7;
+            margin-bottom: 1.8rem;
+            max-width: 540px;
+        }
+
+        .pink  { color: #f9416e; font-weight: 800; }
+        .blue  { color: #4e86ff; font-weight: 800; }
+        .green { color: #5ec95e; font-weight: 800; }
+
+        .card {
+            background: white;
+            border-radius: 18px;
+            padding: 2rem 2.5rem;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 4px 40px rgba(100,80,160,0.07);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1e2d5a;
+            margin-bottom: 0.4rem;
+        }
+
+        .card-sub {
+            font-size: 0.95rem;
+            color: #5a6a8a;
+            font-weight: 600;
+            margin-bottom: 1.4rem;
+        }
+
+        .form { display: flex; gap: 10px; }
+
+        .form input {
+            flex: 1;
+            padding: 0.9rem 1.1rem;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 9px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form input:focus { border-color: #f9416e; }
+        .form input::placeholder { color: #a0aec0; }
+
+        .form button {
+            background: #f9416e;
+            color: white;
+            border: none;
+            border-radius: 9px;
+            padding: 0.9rem 1.8rem;
+            font-family: inherit;
+            font-size: 0.97rem;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .form button:hover { background: #e0305e; }
+
+        @media (max-width: 540px) {
+            .form { flex-direction: column; }
+            .logo { width: 200px; }
+            .heading { font-size: 1.5rem; }
+            .card { padding: 1.4rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <img src="logo.png" alt="BabyBrain Logo" class="logo">
+        <h1 class="heading">Something amazing is coming..</h1>
+        <p class="subheading">
+            BabyBrain is Singapore's all-in-one platform for discovering baby, toddler &amp; kids activities.
+        </p>
+        <div class="card">
+            <div class="card-title">Join the waitlist ❤️</div>
+            <div class="card-sub">Be the first to know when we launch!</div>
+            <form class="form" onsubmit="event.preventDefault(); alert('Thanks for joining!');">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Join Waitlist</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

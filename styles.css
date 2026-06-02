@@ -1,0 +1,167 @@
+:root {
+    --text-main: #172b4d;
+    --text-sub: #505f79;
+    --color-pink: #f94178;
+    --color-blue: #5887ff;
+    --color-green: #7fcd59;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    color: var(--text-main);
+    /* Vertically and horizontally center the wrapper */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Full-screen background image */
+.background-blobs {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: url('bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Single centered wrapper — logo + text + card all live here */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 720px;
+    padding: 0 1.5rem;
+}
+
+.logo {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    display: block;
+    /* Zero margin — the cropped image has no empty space */
+    margin-bottom: 0;
+}
+
+.heading {
+    font-size: 2.1rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.subheading {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-sub);
+    line-height: 1.65;
+    margin-bottom: 1.8rem;
+}
+
+.highlight-pink { color: var(--color-pink); font-weight: 800; }
+.highlight-blue { color: var(--color-blue); font-weight: 800; }
+.highlight-green { color: var(--color-green); font-weight: 800; }
+
+.waitlist-card {
+    background: white;
+    padding: 2rem 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+    width: 100%;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.card-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-sub);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.waitlist-form {
+    display: flex;
+    gap: 12px;
+}
+
+.email-input {
+    flex: 1;
+    padding: 0.9rem 1.2rem;
+    border: 2px solid #eaeef2;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.email-input:focus {
+    border-color: var(--color-pink);
+}
+
+.email-input::placeholder {
+    color: #a0aec0;
+    font-weight: 600;
+}
+
+.submit-button {
+    background: var(--color-pink);
+    color: white;
+    border: none;
+    padding: 0.9rem 1.8rem;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    white-space: nowrap;
+}
+
+.submit-button:hover {
+    background: #e63668;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(249, 65, 120, 0.3);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+    .waitlist-form {
+        flex-direction: column;
+    }
+    .waitlist-card {
+        padding: 1.5rem 1.2rem;
+    }
+    .heading {
+        font-size: 1.6rem;
+    }
+    .logo {
+        max-width: 260px;
+    }
+}
