@@ -13,7 +13,7 @@ export default async function handler(req, res) {
 
   const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
   const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID;
-  const TABLE_NAME = 'waitlist';
+  const TABLE_NAME = 'tblBkRG0ENi5l0TY9';
 
   if (!AIRTABLE_API_KEY || !AIRTABLE_BASE_ID) {
     console.error('Missing Airtable environment variables');
@@ -54,7 +54,6 @@ export default async function handler(req, res) {
           {
             fields: {
               Email: email,
-              'Created At': new Date().toISOString(),
             },
           },
         ],
