@@ -44,7 +44,7 @@
         .heading {
             font-size: 2rem;
             font-weight: 800;
-            color: #000080;
+            color: #272757;
             margin-bottom: 0.5rem;
         }
 
@@ -73,7 +73,7 @@
         .card-title {
             font-size: 1.5rem;
             font-weight: 800;
-            color: #000080;
+            color: #272757;
             margin-bottom: 0.4rem;
         }
 
@@ -180,7 +180,7 @@
                     form.style.display = 'none';
                     document.querySelector('.card-sub').style.display = 'none';
                     document.querySelector('.card-title').textContent = '✓ You\'re on the waitlist!';
-                    showMessage("We'll let you know as soon as BabyBrain launches.", '#000080');
+                    showMessage("We'll let you know as soon as BabyBrain launches.", '#272757');
                 } else if (res.status === 409) {
                     // Duplicate
                     showMessage('You\'re already on the waitlist.', '#5a6a8a');
